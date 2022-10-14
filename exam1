@@ -1,0 +1,31 @@
+#!/bin/bash
+###### to create a multi users in shell scipting ######
+
+### argument is mandatory ####
+user=$1
+if [ ! $user ]
+then
+echo "given user name is mandatory...?"
+exit
+fi
+
+### the user has root user or not ###
+runuser=`/usr/bin/whoami`
+if [ "$runuser" != 'root' ]
+then
+echo "boss the root user only create the new users....?"
+exit
+fi
+
+### to show the user id ###
+/usr/bin/id $user
+if [ $? -eq 0 ]
+then
+echo "the trying user has aleredy is existing..so please give a new user "
+exit
+fi
+
+### to create the user ###
+/sbin/useradd
+echo "congratulations...the user has aleredy existing..?"
+
